@@ -7,7 +7,7 @@
 }
 
 .all {
-    background-color: #0f0f14;
+    background-color: #000000;
     color: #f1f1f1;
     padding: 50px;
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
@@ -31,7 +31,7 @@ div strong {
     margin-top: 30px;
     margin-bottom: 8px;
     font-size: 1.05rem;
-    color: #7abfff;
+    color: #f77e7e;
 }
 
 /* Respuestas */
@@ -46,12 +46,12 @@ p {
 
 /* Referencias */
 div h1 strong {
-    color: #b36bd4;
+    color: #fa2525;
 }
 
 /* Detalles menores que ya estaban */
 button {
-    background-color: #7abfff;
+    background-color: #f77e7e;
     color: white;
     border: none;
     margin: 10px;
