@@ -91,6 +91,6 @@ function inverso(numero) {
 }
 
 console.log("inverso(62058):", inverso(62058)); // Ejemplo de uso, regresa 85026
-
+5
 
 // 

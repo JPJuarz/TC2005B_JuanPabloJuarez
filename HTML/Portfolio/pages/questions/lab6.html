@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6</title>
+    <link rel="stylesheet" href="lab6.css">
+</head>
+<body class="all">
+
+    <header class="header">
+        <h1>Lab 6 POE</h1>
+        <h2 id="title">AUTO COLLECTION</h2>
+    </header>
+
+    <div id="guide">
+        <h3> Once clicked on the photos, descriptions of each car will appear </p>
+    </div>
+
+    <main class="products">
+        <!-- Prod 1 - Koenigsegg-->
+        <div class="card">
+            <div class="image-box" id="box1">
+                <img id="car1" src="https://preview.redd.it/n318gixedw581.jpg?width=640&crop=smart&auto=webp&s=2fd1e8dcfdd4741bbaa81a3134dccc5a22f10162" alt="Koenigsegg">
+            </div>
+            <div class="quantity">
+               <span class="label">Cant.</span>
+               <input id="qty1"type="number" value="0" min="0" max="3">
+            </div>
+        </div>
+
+        <!-- Prod 2 - Ferrari-->
+        <div class="card">
+            <div class="image-box" id="box2">
+                <img id="car2" src="https://e1.pxfuel.com/desktop-wallpaper/173/1013/desktop-wallpaper-ferrari-50-hq-vertical-car.jpg" alt="Ferrari">
+            </div>
+            <div class="quantity">
+               <span class="label">Cant.</span>
+               <input id="qty2" type="number" value="0" min="0" max="3">
+            </div>
+        </div>
+
+        <!-- Prod 3 - Pagani -->
+        <div class="card">
+            <div class="image-box" id="box3">
+                <img id="car3" src="https://i.pinimg.com/736x/5a/f9/64/5af9646c98d23e9794b358e78db9e818.jpg" alt="Pagani">
+            </div>
+            <div class="quantity">
+            <span class="label">Cant.</span>
+            <input id="qty3" type="number" value="0" min="0" max="3">
+            </div>
+        </div>
+    </main>
+
+    <section class="checkout">
+        <h3>TOTAL: $<span id="total">0</span></h3>
+        <h4>IVA: $<span id="iva">0</span></p>
+    </section>
+
+    <section class="questions">
+        <h2> Questions POE</h2>
+        <h4> ¿Por qué es una buena práctica usar JavaScript para checar que sean válidos los inputs de las formas antes de enviar los datos al servidor?</h4>
+            <p>Es una buena práctica usar JavaScript para validar los inputs antes de enviar 
+                una forma porque mejora la experiencia del usuario y la eficiencia 
+                del sistema. Usar js permite dar retroalimentación inmediata (por ejemplo, 
+                avisar si un campo esta vacío o mal escrito) sin tener que recargar la pagina, lo que 
+                hace el proceso más rápido y claro para el usuario. También ayuda a reducir
+                errores comunes y evita mandar datos incorrectos al servidor, ahorrando tiempo 
+                y recursos. </p>
+        <h4> ¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?</h4>
+            <p>Las validaciones con JavaScript se pueden saltar porque corren en el navegador del 
+               usuario y nosotros (el usuario) podemos modificar o desactivar el código. Por ejemplo, se puede cambiar
+               el valor de los inputs desde las herramientas del navegador o enviar los datos 
+               directamente al servidor. 
+        <h4> Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces ¿por qué la primera pregunta dice que es una buena práctica?</h4>
+            <p> Se sigue viendo como buena practica porque aunque JavaScript no es una 
+                fuente de seguridad real, sigue siendo útil como una capa de validación
+                 inicial que mejora la experiencia del usuario y reduce errores comunes 
+                 antes de enviar los datos al servidor.</p>
+    </section>
+
+    <script src="../../js/lab6.js"></script>
+</body>
+</html>
