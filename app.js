@@ -1,21 +1,6 @@
 const express = require('express');
 const app = express();
 
-//Middleware
-app.use((request, response, next) => {
-    console.log('Middleware!');
-    next(); //Le permite a la petición avanzar hacia el siguiente middleware
-});
-
-app.use((request, response, next) => {
-    console.log('Otro middleware!');
-    response.send('¡Hola mundo!'); //Manda la respuesta
-});
-
-app.listen(3000);
-
-const http = require('http');
-
 const html_header = `
 <!DOCTYPE html>
 <html>
@@ -44,68 +29,19 @@ const html_footer = `
 </html>  
 `;
 
-const html_index = `
-    <a href="/new"><button class="button is-primary">Nuevo videojuego</button></a>
-    <div class="columns">
-      <div class="column">
-          <div id="halo"></div>
-      </div>
-      <div class="column">
-          Minecraft
-          <figure class="image">
-              <img class="is-rounded" src="https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270" />
-          </figure>
-      </div>    
-      <div class="column">      
-                  <li>Cyberpunk</li>
-                  <li>Doom</li>
-                  <li>Gears of war</li>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="container">
-    <div class="columns">
-      <div class="column">
-        <h1 class="title">Comandos de git</h1>
-        <ul>
-          <li>git add: Sirve para agregar cambios a la transacción.</li>
-          <li>
-            git commit -m "mensaje en imperativo": Sirve para comprometer 
-            la transacción, es decir, guardar los cambios.
-          </li>
-          <li>git checkout <strong>[nombre_rama]</strong>: Sirve para cambiarse de rama.</li>
-          <li>
-            git checkout -b [nombre_rama]: Sirve para crear una nueva rama y 
-            cambiarse a esa nueva rama.
-          </li>
-          <li>
-            git push: Sirve para sincronizar los cambios desde mi repositorio 
-            hacia el repositorio remoto.
-          </li>
-          <li>
-            git pull: Sirve para sincronizar los cambios del repositorio remoto 
-            hacia mi repositorio.
-          </li>
-        </ul>
-      </div>
-    </div>  
-`;
-
 const html_form = `
-<form>
+<form action="/new" method="POST">
   <div class="field">
     <label for="nombre" class="label">Nombre</label>
     <div class="control">
-      <input id="nombre" class="input" type="text" placeholder="e.g Minecraft">
+      <input id="nombre" name="nombre" class="input" type="text" placeholder="e.g Minecraft">
     </div>
   </div>
 
   <div class="field">
     <label for="imagen" class="label">Imagen</label>
     <div class="control">
-      <input id="imagen" class="input" type="text" placeholder="e.g. https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270">
+      <input id="imagen" name="imagen" class="input" type="text" placeholder="e.g. https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270">
     </div>
   </div>
 
@@ -113,31 +49,78 @@ const html_form = `
 </form>
 `;
 
-const server = http.createServer( (request, response) => {    
+const videojuegos = [
+  {
+    nombre: "Minecraft",
+    imagen: "https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270"
+  },
+  {
+    nombre: "Gears of war",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Gears_of_war_cover_art.jpg/250px-Gears_of_war_cover_art.jpg"
+  },
+];
 
-    if (request.url == "/") {
-        response.setHeader('Content-Type', 'text/html');
-        response.write(html_header + html_index + html_footer);
-        response.end();
-    } else if (request.url == "/new") {
-        response.setHeader('Content-Type', 'text/html');
-        response.write(html_header + html_form + html_footer);
-        response.end();
-    } else {
-        response.setHeader('Content-Type', 'text/html');
-        response.write(html_header + "Error 404" + html_footer);
-        response.end();
-    }
-
-    // request.on('data', (data) => {
-    //   console.log(data);
-    //   datos_completos.push(data);
-    // });
-
-    // request.on('end', () => {
-    //     const string_datos_completos = Buffer.concat(datos_completos).toString();
-    //     console.log(string_datos_completos);
-    // });
+//Middleware
+app.use((request, response, next) => {
+    console.log('Middleware!');
+    next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-server.listen(3000);
+app.use('/new', (request, response, next) => {
+    response.send(html_header + html_form + html_footer);
+});
+
+app.use((request, response, next) => {
+    console.log('Otro middleware!');
+    response.send('¡Hola mundo!'); //Manda la respuesta
+    let html_index = `
+              <a href="/new"><button class="button is-primary">Nuevo videojuego</button></a>
+              <div class="columns">`;
+
+        for (let juego of videojuegos) {
+            html_index += `
+                <div class="column">
+                    ${juego.nombre}
+                    <figure class="image">
+                        <img class="is-rounded" src="${juego.imagen}" />
+                    </figure>
+                </div>`;
+        }
+        
+        html_index += `    
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="container">
+              <div class="columns">
+                <div class="column">
+                  <h1 class="title">Comandos de git</h1>
+                  <ul>
+                    <li>git add: Sirve para agregar cambios a la transacción.</li>
+                    <li>
+                      git commit -m "mensaje en imperativo": Sirve para comprometer 
+                      la transacción, es decir, guardar los cambios.
+                    </li>
+                    <li>git checkout <strong>[nombre_rama]</strong>: Sirve para cambiarse de rama.</li>
+                    <li>
+                      git checkout -b [nombre_rama]: Sirve para crear una nueva rama y 
+                      cambiarse a esa nueva rama.
+                    </li>
+                    <li>
+                      git push: Sirve para sincronizar los cambios desde mi repositorio 
+                      hacia el repositorio remoto.
+                    </li>
+                    <li>
+                      git pull: Sirve para sincronizar los cambios del repositorio remoto 
+                      hacia mi repositorio.
+                    </li>
+                  </ul>
+                </div>
+              </div>  
+          `;
+
+    response.send(html_header + html_index + html_footer); //Manda la respuesta
+});
+
+app.listen(3000);
