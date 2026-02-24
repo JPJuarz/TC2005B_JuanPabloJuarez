@@ -1,0 +1,26 @@
+{
+  "name": "tc2005b_juanpablojuarez",
+  "version": "1.0.0",
+  "description": "Labs materia TC2005B",
+  "keywords": [
+    "NPM",
+    "Node",
+    "Js"
+  ],
+  "homepage": "https://github.com/JPJuarz/TC2005B_JuanPabloJuarez#readme",
+  "bugs": {
+    "url": "https://github.com/JPJuarz/TC2005B_JuanPabloJuarez/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JPJuarz/TC2005B_JuanPabloJuarez.git"
+  },
+  "license": "MIT",
+  "author": "Juan Pablo Juarez Ortiz",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
