@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+
 const html_header = `
 <!DOCTYPE html>
 <html>
@@ -66,13 +69,17 @@ app.use((request, response, next) => {
     next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-app.use('/new', (request, response, next) => {
+app.get('/new', (request, response, next) => {
+    response.send(html_header + html_form + html_footer);
+});
+
+app.post('/new', (request, response, next) => {
+    videojuegos.push(request.body);
     response.send(html_header + html_form + html_footer);
 });
 
 app.use((request, response, next) => {
     console.log('Otro middleware!');
-    response.send('¡Hola mundo!'); //Manda la respuesta
     let html_index = `
               <a href="/new"><button class="button is-primary">Nuevo videojuego</button></a>
               <div class="columns">`;
