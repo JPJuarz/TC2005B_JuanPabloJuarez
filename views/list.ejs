@@ -1,0 +1,44 @@
+<%- include('includes/_header') %>
+<a href="/videojuegos/new"><button class="button is-primary">Nuevo videojuego</button></a>
+              <div class="columns">`;
+
+        <% for (let juego of videojuegos) { %>
+                <div class="column">
+                    <%= juego.nombre %>
+                    <figure class="image">
+                        <img class="is-rounded" src="<%= juego.imagen %>" />
+                    </figure>
+                </div>
+        <% } %>
+           
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="container">
+              <div class="columns">
+                <div class="column">
+                  <h1 class="title">Comandos de git</h1>
+                  <ul>
+                    <li>git add: Sirve para agregar cambios a la transacción.</li>
+                    <li>
+                      git commit -m "mensaje en imperativo": Sirve para comprometer 
+                      la transacción, es decir, guardar los cambios.
+                    </li>
+                    <li>git checkout <strong>[nombre_rama]</strong>: Sirve para cambiarse de rama.</li>
+                    <li>
+                      git checkout -b [nombre_rama]: Sirve para crear una nueva rama y 
+                      cambiarse a esa nueva rama.
+                    </li>
+                    <li>
+                      git push: Sirve para sincronizar los cambios desde mi repositorio 
+                      hacia el repositorio remoto.
+                    </li>
+                    <li>
+                      git pull: Sirve para sincronizar los cambios del repositorio remoto 
+                      hacia mi repositorio.
+                    </li>
+                  </ul>
+                </div>
+              </div>  
+<%- include('includes/_footer') %>
