@@ -1,4 +1,0 @@
-nombre=Cyberpunk&mensaje=allsdk
-nombre=Cyberpunk&mensaje=lakdlf
-nombre=Juan+Pablo+&mensaje=
-nombre=&mensaje=allsdk
