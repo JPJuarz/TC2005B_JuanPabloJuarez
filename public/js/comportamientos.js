@@ -1,35 +1,21 @@
-//Visualizar el DOM(Document Object Model) en la consola
-//console.log(document);
-
-const videojuego = {
-    nombre: "Halo",
-    imagen: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/976730/header.jpg?t=1740682623",
-    descripcion: `Halo es una aclamada franquicia de videojuegos de disparos en primera persona (FPS) 
-        de ciencia ficción, creada por Bungie y desarrollada actualmente por 343 Industries para 
-        Xbox y PC, centrada en el supersoldado Jefe Maestro y su IA, Cortana.`,
-    genero: ["Shooter"],
+// Va a servir cuando le piques a la imagen de Marina Bay Sands
+                                                                                                                                                                                                                                                
+const marina = document.getElementById("marina");
+console.log(marina)
+const cambiarimg = () => {
+    console.log("Click en marina bay")
+    marina.innerHTML =
+    '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Marina_Bay_Sands_in_the_evening_-_20101120.jpg/1280px-Marina_Bay_Sands_in_the_evening_-_20101120.jpg" alt="Marina Bay Sands" width="500" height="300">';
+    marina.onclick = mostrarimg;
 }
 
-const halo = document.getElementById("halo");
+marina.onclick = cambiarimg;
 
-console.log(halo);
-
-const mostrar_descripcion = () => {
-    halo.innerHTML = `<p class='is-size-3'>${videojuego.nombre}</p>
-        <p>${videojuego.descripcion}</p>
-        <span class="tag">${videojuego.genero[0]}</span>
-        `;
-    halo.onclick = mostrar_imagen;
+const mostrarimg = () => {
+    console.log("Click en marina bay")
+    marina.innerHTML =
+    '<img src="https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/https://www.cfmedia.vfmleonardo.com/imageRepo/2/0/186/208/259/20240826_Exterior_Architecture-17_O/Marina-Bay-Sands-Singapore-Exterior.jpg?tr=w-656%2Ch-390%2Cfo-auto" alt="Marina Bay Sands" width="500" height="300">' ;
+    marina.onclick = cambiarimg;
 }
 
-const mostrar_imagen = () => {
-    halo.innerHTML = 
-        `<figure class="image">
-            <img class="is-rounded" src="${videojuego.imagen}}" />
-        </figure>`;
-    halo.onclick = mostrar_descripcion;
-}
-
-mostrar_imagen();
-
-halo.onclick = mostrar_descripcion;
+marina.onclick = mostrarimg;

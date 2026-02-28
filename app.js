@@ -1,21 +1,28 @@
 const express = require('express');
-const app = express();
-
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
+const bodyParser = require('body-parser');
+
+const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(bodyParser.urlencoded({ extended: false }));
 
-const rutasVideojuegos = require('./routes/videojuegos.routes')
-app.use('/videojuegos', rutasVideojuegos);
+const mainroutes = require('./routes/mainroutes');
+const labsroutes = require('./routes/labsroutes');
 
-app.use((request, response, next) => {
-  response.status(404).send("La pagina que estas buscando no existe (pon /videojuegos)")
+app.use('/', mainroutes);
+app.use('/labs', labsroutes);
+
+// 404
+app.use((req, res) => {
+    res.status(404).render('404');
 });
 
-app.listen(3000);
+// Servidor
+app.listen(3000, () => {
+    console.log("Servidor corriendo en http://localhost:3000");
+});
