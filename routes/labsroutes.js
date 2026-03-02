@@ -25,4 +25,12 @@ router.get('/lab10', (req, res) => {
     res.render('questions/lab10');
 });
 
+router.get('/lab11', (req, res) => {
+    res.render('questions/lab11');
+});
+
+router.get('/lab12', (req, res) => {
+    res.render('questions/lab12')
+})
+
 module.exports = router;
