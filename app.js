@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const app = express();
 
@@ -11,11 +12,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(session({
+    secret: 'xK9#mP2$qL7nW4@vR6jT8uY1',
+    resave: false,
+    saveUninitialized: false,
+}));
+
 const mainroutes = require('./routes/mainroutes');
 const labsroutes = require('./routes/labsroutes');
+const usersroutes = require('./routes/users.routes');
 
 app.use('/', mainroutes);
 app.use('/labs', labsroutes);
+app.use('/users', usersroutes);
 
 // 404
 app.use((req, res) => {

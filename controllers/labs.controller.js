@@ -2,7 +2,8 @@ const Lab = require('../models/labs.model');
 
 exports.get_list = (req, res, next) => {
     res.render('labs', {
-        labs: Lab.fetchAll()
+        labs: Lab.fetchAll(),
+        username: req.session.username || '',
     });
 };
 
@@ -17,6 +18,7 @@ exports.get_lab = (req, res, next) => {
 
     res.render(lab.view, {
         title: `Lab ${lab.id}`,
-        cssFile: lab.css
+        cssFile: lab.css,
+        username: req.session.username || '',
     });
 };

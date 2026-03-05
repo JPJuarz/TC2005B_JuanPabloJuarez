@@ -11,6 +11,28 @@
 
 <body class="all">
 
+<nav class="navbar is-primary" role="navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <strong>TC2005B</strong>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if (typeof(username) != "undefined" && username != '') { %>
+            <span class="navbar-item">Hola, <strong>&nbsp;<%= username %></strong>!</span>
+            <a class="button is-light" href="/users/logout">Log out</a>
+          <% } else { %>
+            <a class="button is-light" href="/users/login">Log in</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
 <section class="section">
   <div class="container">
     <div class="labsbox">
