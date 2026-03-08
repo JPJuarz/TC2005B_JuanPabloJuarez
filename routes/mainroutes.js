@@ -13,6 +13,10 @@ router.get('/reference', (req, res) => {
     res.render('reference', { username: req.session.username || '' });
 });
 
+router.get('/ids', (req,res) => { 
+    res.render('ids', { username: req.session.username || ''});
+})
+
 //router.get('/labs', (req, res) => {
 //    res.render('labs', { username: req.session.username || '' });
 //});

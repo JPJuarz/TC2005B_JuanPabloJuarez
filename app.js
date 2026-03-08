@@ -22,8 +22,16 @@ const mainroutes = require('./routes/mainroutes');
 const labsroutes = require('./routes/labsroutes');
 const usersroutes = require('./routes/users.routes');
 
+// Middleware para proteger rutas
+const requireLogin = (req, res, next) => {
+    if (!req.session.username) {
+        return res.redirect('/users/login');
+    }
+    next();
+};
+
 app.use('/', mainroutes);
-app.use('/labs', labsroutes);
+app.use('/labs', requireLogin, labsroutes);
 app.use('/users', usersroutes);
 
 // 404

@@ -8,6 +8,7 @@ const labs = [
     { id: 11, view: 'questions/lab11', css: '/css/lab6.css' },
     { id: 12, view: 'questions/lab12', css: '/css/lab6.css' },
     { id: 13, view: 'questions/lab13', css: '/css/lab6.css' },
+    { id: 17, view: 'questions/lab17', css: '/css/lab6.css' },
 ];
 
 module.exports = class Lab {

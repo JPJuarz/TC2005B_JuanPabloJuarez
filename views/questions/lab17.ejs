@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../includes/head.ejs', { 
+    title: "Lab 17",
+    cssFile: "/css/lab6.css"
+}) %>
+</head>
+<body class="all">
+    <header class="header">
+        <h1>Lab 17 Interacción con base de datos</h1>
+        <h3> ¿Qué ventajas tiene escribir el código SQL únicamente en la capa del modelo?</h3>
+        <p class="questions2"> Escribir el SQL solo en el modelo mantiene el código organizado porque que cada capa tiene una 
+        responsabilidad clara y única. Si se necesita modificar una consulta o cambiar de base de datos, solo se toca el 
+        modelo sin afectar el controller o las vistas o nada más. AL mismo tiempo, si varios controllers necesitan la misma
+        consulta, simplemente llaman al mismo método del modelo en lugar de repetir código.  </p>
+        <h3> ¿Qué es SQL injection y cómo se puede prevenir?</h3>
+        <p class="questions2"> SQL injection es un ataque donde un usuario escribe código SQL en un campo de texto para 
+        manipular las consultas de la base de datos, por ejemplo entrando sin contraseña o robando datos (o como lo que vimos en 
+        clase de que hasta se pueden borrar tablas). Se previene usando consultas protegidas, donde los valores 
+        se pasan por separado con ? en lugar de insertarlos directamente en el string SQL. Así MySQL trata el input siempre
+        como texto y nunca lo ejecuta como código.</p>
+    </header>
+</body>
+</html>
