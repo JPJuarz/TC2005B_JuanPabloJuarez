@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../includes/head.ejs', { 
+    title: "Lab 18",
+    cssFile: "/css/lab6.css"
+}) %>
+</head>
+<body class="all">
+    <header class="header">
+        <h1>Lab 18 | Autenticación </h1>
+        <h3> ¿Qué otras formas de autentificación existen?</h3>
+        <p class="questions2"> Aparte del usuario y contraseña normal que se fue utilizado en este laboratorio, 
+        existen varias otras formas de autenticación. Entre estas estan OAuth, que es cuando se hace login con una 
+        cuenta de Google o Facebook en lugar de crear una nueva desde 0. También existe la autenticación de dos factores (2FA),
+        donde aparte del password, también es necesario cada cierta cantidad de tiempo que te manden un código el cual se
+        tiene que ingresar. Otro que existe también es la autenticación por tokens, que en lugar de sesiones usan un token 
+        encriptado que viaja en cada petición. Finalmente (de las más conocidas almenos) estan estan también la autenticación 
+        con huella digital o Face ID.</p>
+    </header>
+</body>
+</html>

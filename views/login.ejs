@@ -10,8 +10,10 @@
 <section class="section">
     <div class="container" style="max-width: 400px;">
         <h1 class="title">Log in</h1>
-        <% if (error) { %>
-            <div class="notification is-danger"><%= error %></div>
+        <% if (error != '') { %>
+            <div class="notification is-danger">
+                <%= error %>
+            </div>
         <% } %>
         <form action="/users/login" method="POST">
             <div class="field">
@@ -29,6 +31,7 @@
             <input class="button is-primary" type="submit" value="Entrar">
         </form>
     </div>
+    <a class="button is-light" href="/users/signup">Crear cuenta</a>
 </section>
 </body>
 </html>
