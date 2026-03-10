@@ -1,0 +1,76 @@
+1.- Actrices de “Las brujas de Salem”.
+
+SELECT Nombre
+FROM Elenco E, Actor A
+WHERE E.Nombre = A.Nombre
+AND A.Sexo = 'F' AND E.Titulo = 'Las brujas de Salem';
+
+------------------------------------
+
+SELECT Nombre
+FROM Elenco
+WHERE Titulo = 'Las brujas de Salem'
+AND Nombre IN (SELECT A.Nombre
+		FROM Actor A
+		WHERE Sexo = 'F');
+
+
+2.- Nombres de los actores que aparecen en películas producidas por MGM en 1995.
+
+SELECT Nombre
+FROM Elenco E, Pelicula P
+JOIN pelicula A on E.titulo = A.titulo AND E.año = A.año
+AND nomestudio = 'MGM' AND P.año = 1995;
+
+------------------------------------
+
+SELECT Nombre
+FROM Elenco
+WHERE año = 1995
+AND titulo IN (SELECT titulo
+		FROM Pelicula
+		AND nomestudio = 'MGM');
+
+3.- Películas que duran más que “Lo que el viento se llevó” (de 1939).
+
+SELECT titulo
+FROM Peliculas
+WHERE duracion > (SELECT duracion
+		FROM Peliculas
+		WHERE titulo = 'Lo que el viento se llevo'
+		AND año = 1939)
+
+4.- Productores que han hecho más películas que George Lucas.
+
+SELECT Pr.nombre, COUNT(Pr.id_productor)
+FROM Productor Pr
+JOIN Pelicula pl on Pr.id_productor = Pl.id_productor
+HAVING COUNT(Pr.id_productor) > (SELECT COUNT (id_productor)
+				FROM Productor Pr
+				JOIN Pelicula Pl on Pr.id_productor = Pl.id_productor
+				WHERE Pr.nombre = 'George Lucas')
+GROUP BY Pr.nombre;
+
+5.- Nombres de los productores de las películas en las que ha aparecido Sharon Stone.
+
+SELECT Pr.nombre
+FROM Productor Pr
+INNER JOIN pelicula P ON Pr.idproductor = P.idproductor
+WHERE P.titulo IN( SELECT E.titulo
+			FROM elenco E
+			WHERE E.nombre = 'Sharon Stone');
+
+-----------------------------------------------
+
+SELECT PR.nombre
+FROM productor PR
+INNER JOIN pelicula P ON PR.idproductor = P.idproductor
+INNER JOIN elenco E ON P.titulo = E.titulo
+WHERE E.nombre = 'Sharon Stone'
+
+6.- Título de las películas que han sido filmadas más de una vez
+
+SELECT titulo, COUNT(titulo) as 'Cantidad de veces filmada'
+FROM Peliculas
+GROUP BY titulo
+HAVING COUNT(titulo) > 1
