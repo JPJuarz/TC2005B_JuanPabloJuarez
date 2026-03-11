@@ -5,6 +5,7 @@ exports.get_list = (req, res, next) => {
         labs: Lab.fetchAll(),
         username: req.session.username || '',
         isLoggedIn: req.session.isLoggedIn || '',
+        permisos: req.session.permisos || [],
     });
 };
 
@@ -22,5 +23,6 @@ exports.get_lab = (req, res, next) => {
         cssFile: lab.css,
         username: req.session.username || '',
         isLoggedIn: req.session.isLoggedIn || '',
+        permisos: req.session.permisos || [],
     });
 };

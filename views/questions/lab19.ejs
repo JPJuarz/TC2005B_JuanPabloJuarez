@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../includes/head.ejs', { 
+    title: "Lab 19",
+    cssFile: "/css/lab6.css"
+}) %>
+</head>
+<body class="all">
+    <header class="header">
+        <h1>Lab 19 | RBAC</h1>
+        <h3> ¿En qué consiste el control de acceso basado en roles?</h3>
+        <p class="questions2"> El control de acceso basado en roles (RBAC) es un modelo de seguridad donde en lugar de que se 
+        le asignen permisos directamente a cada usuario, se crean roles los cuales son los que agrupan permisos y a los 
+        usuarios se les asignan estos roles. Funciona basicamente como un intermediario entre los usuarios y los permisos. 
+        Algunas ventajas de este es bastante mas fácil de administrar por ejemplo si se quiere cambiar lo que puede hacer un 
+        tipo de usuario solo se modifica el rol y afecta a todos los que lo tienen. También es más fácil de escalar. Si hay miles 
+        de usuarios en lugar de irle poniendo permisos uno por uno se le pone a un rol. Esto lo hace más seguro porque los permisos 
+        están centralizados minimizando el riesgo de darle acceso a alguien que no debería de tenerlo.  </p>
+
+        <h3> Investiga y describe 2 sistemas, uno que aplique RBAC y uno que no. Realic un análisis de las ventajas y desventajas de cada uno.</h3>
+        <p class="questions2"> Google es un ejemplo de un sistema que usa RBAC para manejar los permisos dentro de una organización. 
+            Tiene roles como Super Admin, Admin de usuarios, Admin de grupos y usuarios normales. Estos tienen cada uno permisos 
+            específicos por ejemplo nu admin de usuarios puede crear y borrar cuentas. Algunas ventajas como mencionado previamente 
+            es que es muy fácil agregar empleados nuevos, solo les asignas el rol que corresponde a su puesto y solito tienen todo 
+            lo que necesitan. Si cambian las responsabilidades de algo, solo se tiene que modificar el rol y afecta a todos. 
+            Algunas desventajeas en cambio es que si se necesita darle a un usuario un permiso muy especifico que no existe en 
+            ningun rol existente, se tiene que crear un rol nuevo solo para eso lo cual puede volverse complicado. También puede 
+            ser problematico en casos donde un usuario necesita permisos temporales.</p>
+        <p class="questions2"> Un ejemplo de un sistema que no utiliza RBAC es Github por ejemplo. Este es un sitio 
+            que se basa en repositorios donde solamente se controla y se distingue quien tiene acceso y quien no. Esto lo 
+            qeu hace es perimitr hacer push o no, sin ningun nivel por intermedio u otros roles que hagan diferentes cosas. 
+            Algunas ventajas es que esto lo hace más fácil de entender y no se tiene que configurar previamente. Unas desventajas 
+            son que no puedes dar niveles de acceso y se puede dar más acceso del necesario porque no hay ningun nivel en el 
+            medio lo cuál puede ser un riesgo y puede causar muchas complicaciones.</p>   
+
+        <h2> Referencia</h2>
+        <p class="questions2"> Google. (2026). Google Cloud: Guía del Usuario de acceso basado en Roles (RBAC). Recuperado de https://docs.cloud.google.com/chronicle/docs/administration/rbac?hl=es-419</p> 
+    </header>
+</body>
+</html>

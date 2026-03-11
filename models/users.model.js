@@ -26,4 +26,14 @@ module.exports = class User {
     static fetchAll() {
         return db.execute('SELECT id, username, nombre FROM users');
     }
+
+    static fetchPermisos(user_id) {
+    return db.execute(`
+        SELECT permisos.nombre 
+        FROM permisos
+        INNER JOIN roles_permisos ON permisos.id = roles_permisos.permiso_id
+        INNER JOIN users_roles ON roles_permisos.rol_id = users_roles.rol_id
+        WHERE users_roles.user_id = ?
+    `, [user_id]);
+}
 };

@@ -22,11 +22,18 @@ exports.post_login = (request, response, next) => {
         bcrypt.compare(request.body.password, rows[0].password).then((doMatch) => {
             if (doMatch) {
                 request.session.isLoggedIn = true;
-                request.session.username = request.body.username;
-                return request.session.save((error) => {
-                    return response.redirect('/labs');
+                request.session.username = rows[0].username;
+                request.session.userId = rows[0].id;
+
+                // Obtine permisos del usuario y los guarda en sesion
+                User.fetchPermisos(rows[0].id).then(([permisos]) => {
+                    request.session.permisos = permisos.map(p => p.nombre); // el map transforma un array de obj como [{nombre: 'ver_labs}] en ['ver_labs']. Osea simplifica
+                    return request.session.save(() => {
+                        return response.redirect('/labs');
+                    });
                 });
-            } else {
+            }
+            else {
                 request.session.error = 'Usuario y/o password no coinciden';
                 return request.session.save(() => {
                     response.redirect('/users/login');
