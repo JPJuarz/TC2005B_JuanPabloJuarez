@@ -12,6 +12,7 @@ exports.get_login = (request, response, next) => {
 };
 
 exports.post_login = (request, response, next) => {
+    console.log("Intentando login con usuario:", request.body.username);
     User.fetchOne(request.body.username).then(([rows, fieldData]) => {
         if (rows.length < 1) {
             request.session.error = 'Usuario y/o password no coinciden';
