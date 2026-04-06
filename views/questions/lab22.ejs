@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../includes/head.ejs', { 
+    title: "Lab 22",
+    cssFile: "/css/lab6.css"
+}) %>
+</head>
+<body class="all">
+
+<section class="section">
+    <div class="container" style="max-width: 600px;">
+        <h1 class="title">Lab 22: Archivos</h1>
+
+        <% if (mensaje) { %>
+            <div class="notification <%= imagen ? 'is-success' : 'is-warning' %>">
+                <%= mensaje %>
+            </div>
+        <% } %>
+
+        <div class="box">
+            <h2 class="subtitle">Subir imagen</h2>
+            <form action="/labs/lab22" method="POST" enctype="multipart/form-data">
+                <div class="field">
+                    <label class="label">Selecciona una imagen (PNG, JPG, JPEG)</label>
+                    <div class="control">
+                        <input class="input" type="file" name="archivo" accept=".png,.jpg,.jpeg">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-primary" type="submit" value="Subir imagen">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <% if (imagen) { %>
+            <div class="box">
+                <h2 class="subtitle">Última imagen subida</h2>
+                <figure class="image">
+                    <img src="/<%= imagen %>" alt="Imagen subida">
+                </figure>
+                <p class="mt-2 is-size-7 has-text-grey">Ruta en servidor: <%= imagen %></p>
+            </div>
+        <% } %>
+
+        <a class="button is-light mt-4" href="/labs">Volver a labs</a>
+    </div>
+</section>
+
+</body>
+</html>

@@ -11,6 +11,7 @@ const labs = [
     { id: 17, view: 'questions/lab17', css: '/css/lab6.css' },
     { id: 18, view: 'questions/lab18', css: '/css/lab6.css' },
     { id: 19, view: 'questions/lab19', css: '/css/lab6.css' },
+    { id: 22, view: 'questions/lab22', css: '/css/lab6.css' },
     { id: 24, view: 'questions/lab24', css: '/css/lab6.css' },
 ];
 
