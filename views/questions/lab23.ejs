@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../includes/head.ejs', { 
+    title: "Lab 23",
+    cssFile: "/css/lab6.css"
+}) %>
+</head>
+<body class="all">
+    <header class="header">
+        <h1>Lab 23 | Stored Procedures</h1>
+
+        <h3>¿Qué es un Stored Procedure?</h3>
+        <p class="questions2">Son declaraciones o sentencias SQL encapsuladas dentro de un CREATE PROCEDURE. Permiten reducir el trafico de red, son más faciles de mantener y más seguros contra SQL injection. Aun asi, pueden tener fallas como la trasladación de estas entre gestor a gestor por su diferencia de sintaxis.</p>
+
+        <h3>Procedures implementados</h3>
+        <p class="questions2"><strong>1. ObtenerUsuarioConRol</strong> — Dado un username, regresa los datos del usuario junto con su rol asignado. Se usa en el login para verificar credenciales.</p>
+
+        <p class="questions2"><strong>2. ObtenerPermisosDeUsuario</strong> — Dado un user_id, regresa todos los permisos que tiene ese usuario a través de sus roles. Se usa al iniciar sesión para guardar los permisos en la sesión.</p>
+
+        <p class="questions2"><strong>3. RegistrarUsuario</strong> — Dado un username, password encriptado y nombre, inserta un nuevo usuario en la base de datos. Se usa en el signup.</p>
+
+        <h3>¿Qué desventajas tienen los Stored Procedures?</h3>
+        <p class="questions2">Son más difíciles de depurar que el codigo en la aplicación. La lógica de negocio queda dividida entre la BD y la app, lo que complica el mantenimiento. También son especificos de cada gestor de BD, si se cambia de MySQL a otro hay que rehacerlos como mencionado previamente.</p>
+
+    </header>
+</body>
+</html>
