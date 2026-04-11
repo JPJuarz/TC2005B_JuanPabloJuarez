@@ -54,3 +54,9 @@ exports.post_lab22 = (req, res, next) => {
         res.redirect('/labs/lab22');
     });
 };
+
+exports.getLab26 = (request, response, next) => {
+    response.render('questions/lab26', {
+        titulo: 'Lab 26: Servicio Web de OpenStreetMap (vía Leaflet)'
+    });
+};

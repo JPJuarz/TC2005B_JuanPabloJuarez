@@ -1,0 +1,28 @@
+DELIMITER $$
+
+CREATE PROCEDURE ObtenerUsuarioConRol(IN p_username VARCHAR(50))
+BEGIN
+    SELECT u.*, r.nombre AS rol 
+    FROM users u
+    LEFT JOIN users_roles ur ON u.id = ur.user_id 
+    LEFT JOIN roles r ON ur.rol_id = r.id
+    WHERE u.username = p_username;
+END$$
+
+DELIMITER ;
+
+-- num 2
+
+DELIMITER $$
+
+CREATE PROCEDURE ObtenerPermisosDeUsuario(IN p_username VARCHAR(50))
+BEGIN
+    SELECT p.nombre 
+    FROM permisos p
+    JOIN roles_permisos rp ON p.id = rp.permiso_id
+    JOIN users_roles ur ON rp.rol_id = ur.rol_id
+    JOIN users u ON ur.user_id = u.id
+    WHERE u.username = p_username;
+END$$
+
+DELIMITER ;

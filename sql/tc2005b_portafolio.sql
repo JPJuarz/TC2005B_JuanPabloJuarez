@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-03-2026 a las 01:39:28
+-- Tiempo de generación: 11-04-2026 a las 22:02:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -97,10 +97,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `nombre`) VALUES
-(1, 'juan', '1234', 'JP'),
-(2, 'prueba', '1000', 'p'),
-(3, '2077', '$2b$12$y7uIKrzCCBR/3KwocO.4.uLPl2ONwFbpZJk5pXcmtg5lbOmaffJ7i', 'cyberpunk'),
-(4, 'p2', '$2b$12$85YzKdaSZdl6icLOspoEouCdPvw1jXUSH1KIlvi5iPiempYdgmpSW', 'pruebanumdos');
+(5, 'admin', '$2b$12$3i1XPCJ0Jmilwy75oC24BulYG1SWyYq1GgZM0gsXxDKf.cPZ.bqgS', 'admin'),
+(6, 'p1', '$2b$12$DC09yvkps8ODqstKyYF9Qe76fi3tHjc3x0V6RKge/s2a/Zloj.xxS', 'prueba 1'),
+(7, 'p2', '$2b$12$oL6arqlVWiYxXxt1bjKzhuoZpjwtt5mYfawYjmfq8Y0mRovXZelcW', 'prueba 2'),
+(8, '1', '$2b$12$l8Y40H3kKdfCnFBXRAj9/OOsc5Zn6YHvKqcLeKLJr6yx8vCRLEwmW', 'jeanpaul');
 
 -- --------------------------------------------------------
 
@@ -118,8 +118,9 @@ CREATE TABLE `users_roles` (
 --
 
 INSERT INTO `users_roles` (`user_id`, `rol_id`) VALUES
-(1, 1),
-(2, 2);
+(5, 1),
+(6, 2),
+(7, 2);
 
 --
 -- Índices para tablas volcadas
@@ -178,7 +179,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

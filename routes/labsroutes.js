@@ -12,4 +12,6 @@ router.post('/lab22', canViewLabs, labsController.post_lab22);
 // Lab individual
 router.get('/:labId', labsController.get_lab);
 
+router.get('/lab26', labsController.getLab26);
+
 module.exports = router;
